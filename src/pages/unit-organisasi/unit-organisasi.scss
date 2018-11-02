@@ -1,0 +1,43 @@
+page-unit-organisasi {	
+	ion-header{		
+		.toolbar-background
+		{
+			background-color:$bg-navy-2 !important;
+		}	
+
+		.toolbar-title{
+			color:#fff;
+		}
+	}
+	ion-content{		
+		.satker-root{
+			padding-bottom:0px !important;
+			padding-top:10px !important;
+			.input-wrapper{
+				padding-left:10px;
+			}
+		}
+		padding-left:20px;
+		margin:0 auto;
+		div{
+			background-color:$bg-navy;
+			color:#fff;
+			padding:0px;
+		}
+		.content-md{
+			background-color:$bg-navy !important;
+		}
+		ion-content,
+		iframe,
+		ion-item,
+		ion-item.item-md{
+			border:none !important;		
+			background-color:$bg-navy;
+			color:#fff !important;
+			border:none !important;
+		}
+		.item-md.item-block .item-inner{
+			border:none;
+		}
+	}
+}

@@ -1,0 +1,100 @@
+page-pencarian-personel {
+	.field-pencarian{
+		border:2px solid #aaa;		
+	}
+
+	.btn-pencarian-expand{
+		background-color:#F59D1E;
+		margin:0px !important;
+		height:calc(100%);
+	}
+
+	.row-personel{
+		cursor:pointer;
+	}
+
+	.row-personel:hover{
+		background:#aaa;
+	}
+
+	.row-personel .text-nama{
+		font-size:20px;
+		color:#334A64;
+		white-space:normal;
+	}
+
+	.row-personel .text-jabatan{
+		font-size:13px;
+		color:#6B726A;
+		white-space:normal;
+	}
+
+	.row-personel .text-pangkat{
+		font-size:17px;
+		color:#6B726A;
+		white-space:normal;
+	}
+
+	.row-personel .text-nrp{
+		font-size:16px;
+		color:#aaa;
+		white-space:normal;
+	}
+
+	.header-list{
+		background:#57585A;
+		color:#fff;
+		padding:10px;
+		text-align:center;
+		font-size:11px;
+	}
+
+	.footer-list{
+		font-size:10px;		
+		text-align:center;
+	}
+
+	.footer-list ion-col{		
+		text-align:center;
+		left:-10px;
+	}
+
+	.footer-list ul li{
+		display:inline;
+	}
+
+	.tni_all{		
+	    background-color:$bg-navy !important;
+	}
+
+	.tni_au{		
+	    background-color:#b3e4e4 !important;
+	}
+
+	.tni_ad{		
+	    background-color:#91dca7 !important;
+	}
+
+	.tni_al{
+	    background-color:#63d0ea !important;
+	}
+
+	.box-info{
+		color:#fff;		
+		padding:5px 5px;		
+	}
+
+	.box-info-text{				
+		padding:10px 5px;				
+	}
+
+	.toolbar-title,ion-title{		
+		display:inline-flex !important;
+		width:auto !important;
+	}
+
+	.btn-unit-kerja{
+		float:right !important;
+	}
+
+}

@@ -1,0 +1,32 @@
+<!--
+  Generated template for the DokumenPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header transparent>
+
+  <ion-navbar transparent>
+    <ion-title transparent></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+	<iframe class='previewDocument' name= "samplePage" [src]="dokumen" >
+    </iframe>
+    <ion-item>
+        <ion-row no-padding>
+          <ion-col col-2 col-md-1 text-center>
+            <button ion-button [disabled]="disablePrev" (click)="prevDocument()"><</button>
+          </ion-col>
+          <ion-col col-8 col-md-10 text-center class="klasifikasi_dokumen">
+            <p><span>{{klasifikasi_dokumen}}</span></p>
+          </ion-col>
+          <ion-col col-2 col-md-1 text-center>
+           	<button ion-button [disabled]="disableNext" (click)="nextDocument()">></button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+</ion-content>

@@ -1,0 +1,45 @@
+<!--
+  Generated template for the RiwayatDapenPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="header-riwayat">
+
+  <ion-navbar>
+    <ion-item class="" transparent>           
+      <ion-title>
+        Dapen
+      <button ion-button class="btn-nav-riwayat" transparent (click)="openMenu()">
+          <ion-icon name="more"></ion-icon>
+      </button>
+      </ion-title>
+    </ion-item>    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	 <ion-list class="riwayat-personel" no-padding>        
+      <ion-item class="row-riwayat" no-padding ion-item *ngFor="let item of data_list">
+        <ion-row no-padding>
+          <ion-col col-2 col-md-1 no-padding class="{{item.classLeft}}" text-center>
+             <p>
+             	<span class="">{{item.TAHUN}}</span>
+             </p>
+             <div class="badge"></div>
+          </ion-col>
+          <ion-col col-8 col-md-10 class="ls-content">
+            <p>
+            	<span class="text-navy text-14">Semester {{item.SEMESTER}}</span><br>
+            	<span class="text-gray text-12">{{item.NILAI}}</span>
+            </p>
+          </ion-col>
+          <ion-col col-2 col-md-1 text-center class='ls-download {{item.hasDocument}}'>
+           	<button ion-button transparent (click)="clickDocument($event, item)"><ion-icon name="document" ></ion-icon></button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+  </ion-list>
+</ion-content>

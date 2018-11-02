@@ -1,0 +1,61 @@
+<!--
+  Generated template for the FormPencarianPersonelPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>FormPencarianPersonel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-item>
+	    <ion-label color="color-gray-2" stacked>NRP</ion-label>
+		<ion-input type="text" name="f_nrp"></ion-input>
+	</ion-item>
+	<ion-item>
+	    <ion-label color="color-gray-2" stacked>Nama</ion-label>
+		<ion-input type="text" name="f_nama"></ion-input>
+	</ion-item>
+
+	<ion-item>
+	    <ion-label color="color-gray-2" stacked>Jenis Kelamin</ion-label>		
+	</ion-item>		
+	<ion-row>
+		<ion-col col-5>				
+			<ion-item>
+		    <ion-label>Laki-laki</ion-label>
+		    <ion-checkbox [(ngModel)]="l"></ion-checkbox>				  
+		</ion-item>
+		</ion-col>
+		<ion-col col-7>				
+			<ion-item>
+		    <ion-label>Perempuan</ion-label>
+		    <ion-checkbox [(ngModel)]="p"></ion-checkbox>				  
+		</ion-item>
+		</ion-col>
+	</ion-row>
+
+	<ion-item>
+	    <ion-label color="color-gray-2" stacked>Usia</ion-label>		
+	</ion-item>		
+	<ion-row>
+		<ion-col col-3>
+			<ion-input type="text" name="f_usia_awal"></ion-input>
+		</ion-col>
+		<ion-col col-3>
+			s/d
+		</ion-col>
+		<ion-col col-3>				
+			<ion-input type="text" name="f_usia_akhir"></ion-input>
+		</ion-col>		
+		<ion-col col-3>
+			Tahun
+		</ion-col>		
+	</ion-row>
+</ion-content>

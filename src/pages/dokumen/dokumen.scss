@@ -1,0 +1,52 @@
+page-dokumen {	
+	$bg:#342F31;
+	margin:0 auto;
+	div{
+		background-color:$bg;
+		color:#fff;
+		padding:0px;
+	}
+	.content-md{
+		background-color:$bg !important;
+	}
+	ion-content,
+	iframe,
+	ion-item,
+	ion-item.item-md{
+		border:none !important;		
+		background-color:$bg;
+		color:#fff !important;
+		border:none !important;
+	}
+	.item-md.item-block .item-inner{
+		border:none;
+	}
+	.previewDocument{		
+		width: 100%;
+	    height: calc(100% - 100px);	    
+	    top: 0; 
+	    left: 0;	
+	}
+
+	.klasifikasi_dokumen.col{
+		margin: auto 0 !important;
+	}
+
+	.klasifikasi_dokumen span{		
+		white-space:normal;
+		color:#fff;
+	}
+
+	.back-button{
+		color:#fff;
+	}
+
+}
+
+#cover-preview{
+	width:auto !important;
+}
+
+#cover-preview2{
+	width:auto !important;
+}

@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar class="bar-main">    
+    <button ion-button class="btn-bar-main" (click)="openMenu('main')">
+      <!-- <ion-icon name="menu"></ion-icon> -->
+      <img src="assets/imgs/menu/icon-left-head.png" class="item-icon-ls circle-pic">
+    </button>
+    <ion-title>Pencarian Personel</ion-title>
+    <button ion-button class="btn-bar-main btn-unit-kerja" (click)="showUnitKerja()">      
+      <img src="assets/imgs/menu/unitkerja b.png" class="item-icon-ls circle-pic">
+    </button>
+  </ion-navbar>
+  <ion-grid padding floating class="header">
+    <ion-row class="field-pencarian" no-padding>      
+      <ion-col col-10 col-md-11>
+        <ion-input placeholder="Cari Personel" [(ngModel)]="filter.f_text" clearInput></ion-input>
+      </ion-col>
+      <ion-col col-2 col-md-1 no-padding>
+        <button class="btn-pencarian-expand" ion-button color="warning" full float-right no-padding (click)="showFormPencarian()"> 
+          <ion-icon name="play" class="rotate-180"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>         
+  </ion-grid>  
+  <ion-grid no-padding>
+    <ion-row class="header-list">          
+      <ion-col col-8 col-md-6>                    
+        Nama, Jabatan        
+      </ion-col>
+      <ion-col col-4 col-md-6>        
+        Pangkat - Korp, NRP        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>  
+  <ion-list no-padding>        
+      <ion-item [class]="item.row_class" ion-item *ngFor="let item of data_list" (click)="itemTapped($event, item)">
+        <ion-row>
+          <ion-col col-2 col-md-1 no-padding text-center>
+             <ion-avatar>
+                <img src="assets/imgs/img_avatar.png">
+              </ion-avatar>
+          </ion-col>
+          <ion-col col-7 col-md-8 no-padding>
+            <p><span class="text-nama">{{item.NAMA}}</span><br>
+            <span class="text-jabatan">{{item.NAMAJABATAN}}</span></p>
+          </ion-col>
+          <ion-col col-3 col-md-3 no-padding>
+           <p><span class="text-pangkat">{{item.PANGKAT}}</span><br>
+            <span class="text-nrp">{{item.NRP}}</span></p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+  </ion-list>
+   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+     <ion-infinite-scroll-content></ion-infinite-scroll-content>
+   </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer align-title="left" class="bar-assertive">
+   <ion-grid no-padding>
+    <ion-row class="footer-list">                
+      <ion-col md-12 no-padding>                    
+        <ul>
+          <li class="box-info tni_all">{{info_semua}}</li>
+          <li class="box-info-text">Semua</li>
+          <li class="box-info tni_ad">{{info_ad}}</li>
+          <li class="box-info-text">AD</li>
+          <li class="box-info tni_al">{{info_al}}</li>
+          <li class="box-info-text">AL</li>
+          <li class="box-info tni_au">{{info_au}}</li>
+          <li class="box-info-text">AU</li>
+        </ul>        
+      </ion-col>      
+    </ion-row>
+  </ion-grid>
+</ion-footer>
