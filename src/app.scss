@@ -1,0 +1,301 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+$bg-navy:#243746 ;
+$bg-navy-2:#182333 ;
+$bg-green:#45BA7E;
+$bg-orange:#F59D1E;
+$color-gray:#969696;
+$color-gray-2:#4E4E4E;
+
+.nav-menu{
+	color:#fff;
+}
+
+.text-white{
+	color:#fff;
+}
+
+.text-navy{
+	color:$bg-navy;
+}
+
+.text-gray{
+	color:$color-gray;
+}
+
+.text-gray-2{
+	color:$color-gray-2;
+}
+
+.text-green{
+	color:$bg-green;
+}
+
+.text-10{
+	font-size:10pt;
+}
+
+.text-12{
+	font-size:12pt;
+}
+
+.text-14{
+	font-size:14pt;
+}
+
+.text-16{
+	font-size:16pt;
+}
+
+.text-18{
+	font-size:18pt;
+}
+
+.text-block{
+	display:block;
+}
+
+.bg-green2{
+	background-color:$bg-green;
+}
+
+.bg-orange{
+	background-color:$bg-orange;
+}
+
+.nav-menu ion-content,
+.nav-menu ion-content ion-list button{
+	background: $bg-navy;
+	color:#fff;
+	border:0px;
+}
+
+.nav-menu ion-header .toolbar-title,
+.nav-menu ion-header ion-toolbar .toolbar-background-md,
+.nav-menu ion-footer,
+.nav-menu ion-footer ion-list button{
+	background: $bg-navy-2;
+	color:#fff;
+	border:0px;
+}
+
+.nav-footer button{
+	padding:20px;
+	color:#fff;
+	width:100%;
+	display:block;
+}
+
+.nav-footer button.btn-ubah-password{
+	padding:10px;
+	font-size:11px;
+	color:#fff;
+	width:100%;
+	display:block;
+}
+
+
+.riwayat-personel{
+	.row-riwayat{
+		border-bottom:1px solid #e5e9e8;
+	}
+	.row-riwayat:nth-child(odd) {
+		background-color: #e5e9e8;
+	}
+	.row-riwayat .label-md{
+		padding:0;
+		margin:0;
+	}	
+	.ls-tmt{
+		padding:25px 10px;
+		white-space:normal;
+		margin: auto 0;		
+		font-size:8pt;
+	}
+
+	.ls-tmt span{		
+		font-size:10pt;	
+	}
+
+	.ls-tmt .badge{
+		background:#B5B9BC;
+		z-index:5;
+		width:14px;
+		height:14px;
+		border-radius:50%;
+		position:absolute;
+		top:calc(50% - 5px);
+		right:-7px;
+	}
+
+	.ls-tmt.bg-green .badge{
+		background:#106223;		
+		z-index:5;
+		width:14px;
+		height:14px;
+		border-radius:50%;
+		position:absolute;
+		top:calc(50% - 5px);
+		right:-7px;
+	}
+	.ls-content{
+		border-left:1px solid $color-gray;
+		padding:20px;
+		white-space:normal;
+	}
+
+	.ls-download{
+		margin: auto 0;
+		padding:10px;
+		text-align:center;
+	}
+
+	.ls-download button{
+		background:transparent;
+		color:$bg-navy;
+		box-shadow:none;
+	}
+
+	.ls-download ion-icon{
+		font-size:20pt;
+		color:#B5B9BC;
+	}
+
+	.ls-download.bg-green ion-icon{		
+		color:#106223;
+	}
+}
+
+.bar-main{
+	.btn-bar-main{
+		float:left;
+		background:transparent;
+		box-shadow:none;
+	}
+	ion-title{
+		padding-top:10px;
+		padding-bottom:10px;
+	}
+}
+
+
+.btn-transaparent{
+	background:transparent;
+	box-shadow:none;
+}
+
+
+ion-header.header-riwayat {
+	background:$bg-navy;	
+	color:#fff;
+	.toolbar-background,
+	ion-item {
+		color:#fff;
+      	background:$bg-navy;	
+    }
+  	.item-inner{
+  		border:none !important;
+  	}
+    ion-label{
+    	margin:0px;
+    	font-size:15px;
+    }
+    .toolbar-title {
+    	font-size:15px;
+    	text-align:right;
+      	color: #fff;
+      	padding:0px;      	
+      	padding-top:12px;
+    }
+    .btn-nav-riwayat{
+    	background:transparent;
+    	box-shadow:none;
+    	top:-4px;
+    	font-size:20px;
+    	padding:0px 5px;
+    }
+
+    .button-inner{
+    	color:#fff;
+    }
+}
+
+
+.satker-row{
+	padding-left:20px;
+	background:$bg-navy;
+}
+
+.btn-action:active{
+	background-color:rgba(200, 200, 200, 0.5);
+}
+
+.rotate-180 {
+  display: inline-block; 
+  transform: rotate(180deg);
+}
+
+.vertical-middle{
+	margin:auto 0;
+	width:100%;
+}
+
+.field-pencarian-perosnel{
+	min-height:30px;
+}
+
+.block{
+	display:block;
+}
+
+.full-page{
+	height:100%;
+	width:100%;
+}
+
+.custom-checkbox {
+  .icon {
+    font-size: 20px;
+    position: absolute;
+    left: 16px;
+  }
+  i.checkbox-icon {
+    display: none;
+  }
+}
+
+.white-space{
+	white-space:normal;
+}
+
+.alert-button .button-inner{
+	color:$bg-green !important;
+}
+
+.alert-tappable.alert-radio.alert-radio-button[aria-checked=true] .alert-radio-icon{
+	border-color:$bg-green !important;	
+}
+
+.alert-tappable.alert-radio.alert-radio-button[aria-checked=true] .alert-radio-inner{
+		background:rgba(69,186,126,0.8) !important;	
+}
+
+.alert-tappable.alert-radio.alert-radio-button[aria-checked=true] .alert-radio-label{
+	color:$bg-green !important;
+}

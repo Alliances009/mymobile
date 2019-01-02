@@ -1,0 +1,50 @@
+<ion-menu class="nav-menu" [content]="content" [swipeEnabled]="false" id="menu1">
+  <ion-header>
+    <ion-toolbar>
+      <p>
+      <ion-title class="text-white">Admin</ion-title>
+      </p>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer class="nav-footer" align-title="left" class="bar-assertive">
+    <ion-list>
+      <button menuClose class="item item-block item-md btn-ubah-password" (click)="change_password()">
+        Ubah Password
+      </button>
+      <button menuClose class="item item-block item-md btn-keluar" (click)="logout()">
+        Keluar
+      </button>
+    </ion-list> 
+  </ion-footer>
+
+</ion-menu>
+
+<ion-menu class="nav-menu" [content]="content" [swipeEnabled]="false" side="right" id="menu2">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="text-white">
+          <button class="btn-transaparent text-white" menuClose (click)="backDataPokok()">Data Pokok</button>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <button menuClose ion-item *ngFor="let p of pages_riwayat" (click)="openPageRiwayat(p)">
+          {{p.title}}
+        </button>
+      </ion-list>
+    </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
