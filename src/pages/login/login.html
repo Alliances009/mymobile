@@ -18,9 +18,12 @@
 				    <ion-input type="text" color="danger" [(ngModel)]="user.username" name="username"></ion-input>
 				  </ion-item>
 
-				  <ion-item padding>
+				  <ion-item >
 				    <ion-label floating>Kata Kunci</ion-label>
-				    <ion-input type="password" color="danger" [(ngModel)]="user.password" name="password"></ion-input>
+				    <ion-input #password type="password" color="danger" [(ngModel)]="user.password" name="password"></ion-input>
+				    <button ion-button clear item-end (click)='showPass(password,iconshowpass)' style="height:24px;">
+					    <ion-icon #iconshowpass name="eye" style="font-size:24px;"></ion-icon>
+					  </button>
 				  </ion-item>
 				</ion-list>
 

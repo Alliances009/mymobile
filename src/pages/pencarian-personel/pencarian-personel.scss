@@ -3,14 +3,27 @@ page-pencarian-personel {
 		border:2px solid #aaa;		
 	}
 
-	.btn-pencarian-expand{
-		background-color:#F59D1E;
+	.btn-pencarian-expand{		
 		margin:0px !important;
 		height:calc(100%);
 	}
 
 	.row-personel{
 		cursor:pointer;
+		border-bottom:2px solid #888;
+		ion-avatar{
+			min-height: 45px;
+			min-width: 45px;
+			img{
+				min-height: 45px;
+				min-width: 45px;
+			}
+		}
+	}
+	
+	.item-md.item-block .item-inner,
+	.list-md .item-block .item-inner{
+		border:none !important;
 	}
 
 	.row-personel:hover{
@@ -18,26 +31,26 @@ page-pencarian-personel {
 	}
 
 	.row-personel .text-nama{
-		font-size:20px;
+		font-size:17px;
 		color:#334A64;
 		white-space:normal;
 	}
 
 	.row-personel .text-jabatan{
-		font-size:13px;
-		color:#6B726A;
+		font-size:12px;
+		color:#444557;
 		white-space:normal;
 	}
 
 	.row-personel .text-pangkat{
-		font-size:17px;
-		color:#6B726A;
+		font-size:14px;
+		color:#444957;
 		white-space:normal;
 	}
 
 	.row-personel .text-nrp{
-		font-size:16px;
-		color:#aaa;
+		font-size:12xpx;
+		color:#666;
 		white-space:normal;
 	}
 
@@ -95,6 +108,20 @@ page-pencarian-personel {
 
 	.btn-unit-kerja{
 		float:right !important;
+		right:-10px;
+	}
+
+	.icon-default{		
+		padding:60px;
+	}
+
+	.content-default{		
+		text-align:center;
+		height:100%;
+		margin:0 auto;
+		.icon-logo{
+			margin:auto 0;
+		}
 	}
 
 }

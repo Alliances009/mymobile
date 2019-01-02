@@ -43,5 +43,12 @@
           </ion-col>
         </ion-row>
       </ion-item>
+      <ion-item *ngIf="data_list.length==0">
+        <ion-row>
+          <ion-col col-12 text-center>
+            Data Tidak Ditemukan
+          </ion-col>
+        </ion-row>
+      </ion-item>
   </ion-list>
 </ion-content>

@@ -26,20 +26,25 @@
         <ion-row no-padding>
           <ion-col col-2 col-md-1 no-padding class="{{item.classLeft}}" text-center>
              <p>
-             	<span class="">{{item.AWAL_TANGGAL}}</span><br>
-             	<span class="">{{item.AWAL_BULAN}}</span><br>
-             	<span class="">{{item.AWAL_TAHUN}}</span>
+             	<span class="">{{item.TAHUN}}</span>             	
              </p>
              <div class="badge"></div>
           </ion-col>
           <ion-col col-8 col-md-10 class="ls-content">
             <p>
-            	<span class="text-navy text-14">{{item.OPERASI}}</span><br>
-            	<span class="text-gray text-12">{{item.AWAL}} s/d {{item.AKHIR}}</span><br>            	
+            	<span class="text-navy text-14">{{item.OPERASI}}</span>
+            	<!-- <span class="text-gray text-12">{{item.AWAL}} s/d {{item.AKHIR}}</span><br>            	 -->
             </p>
           </ion-col>
           <ion-col col-2 col-md-1 text-center class='ls-download {{item.hasDocument}}'>
            	<button ion-button transparent (click)="clickDocument($event, item)"><ion-icon name="document" ></ion-icon></button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item *ngIf="data_list.length==0">
+        <ion-row>
+          <ion-col col-12 text-center>
+            Data Tidak Ditemukan
           </ion-col>
         </ion-row>
       </ion-item>

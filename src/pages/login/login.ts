@@ -78,5 +78,11 @@ export class LoginPage {
 
   }
 
+  showPass(input,cmp) {  
+  	input.type = input.type === 'password' ? 'text' : 'password';
+  	input.setFocus();
+  	console.log(cmp);
+  }
+
 
 }

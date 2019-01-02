@@ -7,55 +7,184 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>FormPencarianPersonel</ion-title>
+    <ion-title>Pencarian Personel</ion-title>
+    <button ion-button class="btn-transaparent text-green" transparent (click)="reset()" style="position: absolute;top: 5px;right: 10px;padding: 0px;">
+          Reset
+    </button>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-	<ion-item>
-	    <ion-label color="color-gray-2" stacked>NRP</ion-label>
-		<ion-input type="text" name="f_nrp"></ion-input>
-	</ion-item>
-	<ion-item>
-	    <ion-label color="color-gray-2" stacked>Nama</ion-label>
-		<ion-input type="text" name="f_nama"></ion-input>
-	</ion-item>
+<ion-content>
+	<div padding style="padding-left: 0px;">
+		<ion-item>
+			<ion-label class="lebel-field-pencarian-personel color-gray-2 text-12">NRP</ion-label>
+		</ion-item>
+		<ion-item>	    
+			<ion-input type="text" [(ngModel)]="filter.f_nrp" class="field-pencarian-personel"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label class="lebel-field-pencarian-personel color-gray-2 text-12">Nama</ion-label>
+		</ion-item>
+		<ion-item>	    
+			<ion-input type="text" [(ngModel)]="filter.f_nama" class="field-pencarian-personel"></ion-input>
+		</ion-item>
 
-	<ion-item>
-	    <ion-label color="color-gray-2" stacked>Jenis Kelamin</ion-label>		
-	</ion-item>		
-	<ion-row>
-		<ion-col col-5>				
-			<ion-item>
-		    <ion-label>Laki-laki</ion-label>
-		    <ion-checkbox [(ngModel)]="l"></ion-checkbox>				  
+		<ion-item>
+		    <ion-label color="color-gray-2" class="lebel-field-pencarian-personel color-gray-2 text-12">Jenis Kelamin</ion-label>		
+		</ion-item>				
+		<ion-row class="row-pencarian-personel-2">
+			<ion-col col-5 col-md-3>				
+				<ion-item>
+			    <ion-label class="text-10">Laki-laki</ion-label>
+			    <ion-checkbox color="secondary" class="check-pencarian-personel" name="f_kelamin_l" [(ngModel)]="checkbox.f_kelamin_l" value="L" (ionChange)="changeCheckbox('f_kelamin_l','L',$event)"></ion-checkbox>				  
+			</ion-item>
+			</ion-col>
+			<ion-col col-7 col-md-3>				
+				<ion-item>
+			    <ion-label class="text-10">Perempuan</ion-label>
+			    <ion-checkbox color="secondary" class="check-pencarian-personel" name="f_kelamin_p" [(ngModel)]="checkbox.f_kelamin_p" value="P" (ionChange)="changeCheckbox('f_kelamin_p','P',$event)"></ion-checkbox>				  
+			</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-item class="row-pencarian-personel-2">
+		    <ion-label color="color-gray-2" class="lebel-field-pencarian-personel color-gray-2 text-12">Usia</ion-label>		
 		</ion-item>
+		<ion-row padding class="row-pencarian-personel-2">		
+			<ion-col col-3 col-md-2>
+				<ion-input type="number" [(ngModel)]="filter.f_usia_from" class="field-pencarian-personel"></ion-input>
+			</ion-col>
+			<ion-col col-2 col-md-1 class="vertical-middle" text-center>
+				s/d
+			</ion-col>
+			<ion-col col-3 col-md-2>				
+				<ion-input type="number" [(ngModel)]="filter.f_usia_to" class="field-pencarian-personel"></ion-input>
+			</ion-col>		
+			<ion-col col-3 class="vertical-middle">
+				Tahun
+			</ion-col>		
+		</ion-row>
+
+		<ion-item class="row-pencarian-personel-2">
+		    <ion-label color="color-gray-2" class="lebel-field-pencarian-personel color-gray-2 text-12">Lichting</ion-label>		
+		</ion-item>
+		<ion-row padding class="row-pencarian-personel-2">		
+			<ion-col col-4 col-md-2>
+				<ion-select okText="Pilih" cancelText="Batal" [(ngModel)]="filter.f_lichting_from" class='myCustomSelect'>
+				    <ion-option *ngFor="let row of list_tahun" [value]="row.tahun">{{row.tahun}}</ion-option>
+				 </ion-select>
+			</ion-col>
+			<ion-col col-2 col-md-2 class="vertical-middle" text-center>
+				s/d
+			</ion-col>
+			<ion-col col-4 col-md-2>				
+				<ion-select okText="Pilih" cancelText="Batal" [(ngModel)]="filter.f_lichting_to" class='myCustomSelect'>
+				    <ion-option *ngFor="let row of list_tahun" [value]="row.tahun">{{row.tahun}}</ion-option>
+				 </ion-select>
+			</ion-col>				
+		</ion-row>
+
+		<ion-item>
+		    <ion-label color="color-gray-2" class="lebel-field-pencarian-personel color-gray-2 text-12">Matra</ion-label>		
+		</ion-item>		
+		<ion-row class="row-pencarian-personel-2">
+			<ion-col col-4 col-md-3>				
+				<ion-item class="row-pencarian-personel">
+			    	<ion-label class="text-10 label-check-pencarian-personel">TNI AD</ion-label>
+			    	<ion-checkbox color="secondary" class="check-pencarian-personel" [(ngModel)]="checkbox.f_ad" name="f_ad" value="tni_ad" (ionChange)="changeCheckbox('f_ad','tni_ad',$event)"></ion-checkbox>				  
+				</ion-item>
+			</ion-col>
+			<ion-col col-4 col-md-3>				
+				<ion-item class="row-pencarian-personel">
+			    	<ion-label class="text-10 label-check-pencarian-personel">TNI AL</ion-label>
+			    	<ion-checkbox color="secondary" class="check-pencarian-personel" [(ngModel)]="checkbox.f_al" name="f_al" value="tni_al" (ionChange)="changeCheckbox('f_al','tni_al',$event)"></ion-checkbox>				  
+				</ion-item>
+			</ion-col>
+			<ion-col col-4 col-md-3>
+				<ion-item class="row-pencarian-personel">
+			    	<ion-label class="text-10 label-check-pencarian-personel">TNI AU</ion-label>
+			    	<ion-checkbox color="secondary" class="check-pencarian-personel" [(ngModel)]="checkbox.f_au" name="f_au" value="tni_au" (ionChange)="changeCheckbox('f_au','tni_au',$event)"></ion-checkbox>
+				</ion-item>
+			</ion-col>
+		</ion-row>	 
+	</div>	
+
+	<ion-item class="row-pencarian-personel-2">
+	    <ion-label color="color-gray-2" class="lebel-field-pencarian-personel color-gray-2 text-12">Pangkat</ion-label>		
+	</ion-item>	
+	<ion-item  class="row-pencarian-personel-2" padding style="padding-top: 0px;padding-bottom: 0px;">			
+		<ion-range style="padding: 0px;" dualKnobs="true" [(ngModel)]="rangePangkat" step="1" [min]="rangePangkat.min_value" [max]="rangePangkat.max_value"  color="secondary" (ionChange)="changePangkat(rangePangkat)">
+		</ion-range> 
+	</ion-item>
+    <ion-row class="row-pencarian-personel-2" padding style="z-index: 1000;top:-15px;">
+		<ion-col col-6>
+			<span>{{rangePangkat.min_text}}</span>
 		</ion-col>
-		<ion-col col-7>				
-			<ion-item>
-		    <ion-label>Perempuan</ion-label>
-		    <ion-checkbox [(ngModel)]="p"></ion-checkbox>				  
-		</ion-item>
+		<ion-col col-6 text-right>
+			<span>{{rangePangkat.max_text}}</span>
 		</ion-col>
 	</ion-row>
 
-	<ion-item>
-	    <ion-label color="color-gray-2" stacked>Usia</ion-label>		
-	</ion-item>		
-	<ion-row>
-		<ion-col col-3>
-			<ion-input type="text" name="f_usia_awal"></ion-input>
+	<ion-row class="row-pencarian-personel-3">
+		<ion-col col-11 class="cursor" (click)="filterKorpsKecabangan()">
+			<ion-item class="row-pencarian-personel">
+			    <div class="text-gray text-12">Korps/Kecabangan</div>
+			    <div class="text-gray text-10 white-space">{{filter.f_korps.TEXT}}</div>				
+			</ion-item>			
 		</ion-col>
-		<ion-col col-3>
-			s/d
+		<ion-col col-1 no-padding text-right>
+			<button ion-button class="btn-transaparent full-height btn-expaned" (click)="filterKorpsKecabangan()"> 
+				 <ion-icon name="arrow-forward" class="text-gray"></ion-icon>
+			</button>
 		</ion-col>
-		<ion-col col-3>				
-			<ion-input type="text" name="f_usia_akhir"></ion-input>
-		</ion-col>		
-		<ion-col col-3>
-			Tahun
-		</ion-col>		
 	</ion-row>
+
+	<ion-row class="row-pencarian-personel-3">
+		<ion-col col-11 class="cursor" (click)="filterUnitOrganisasi()">
+			<ion-item class="row-pencarian-personel">
+			    <div class="text-gray text-12">Unit Organisasi</div>
+			    <div class="text-gray text-10 white-space">{{filter.f_satker_id.TEXT}}</div>				
+			</ion-item>			
+		</ion-col>
+		<ion-col col-1 no-padding text-right>
+			<button ion-button class="btn-transaparent full-height btn-expaned" (click)="filterUnitOrganisasi()"> 
+				 <ion-icon name="arrow-forward" class="text-gray"></ion-icon>
+			</button>
+		</ion-col>
+	</ion-row>
+
+	<ion-row class="row-pencarian-personel-3">
+		<ion-col col-11 class="cursor" (click)="filterKategoriPersonel()">
+			<ion-item class="row-pencarian-personel">
+			    <div class="text-gray text-12">Kategori Personel</div>
+			    <div class="text-gray text-10 white-space">{{filter.f_kategori_personelid.TEXT}}</div>				
+			</ion-item>			
+		</ion-col>
+		<ion-col col-1 no-padding text-right>
+			<button ion-button class="btn-transaparent full-height btn-expaned" (click)="filterKategoriPersonel()"> 
+				 <ion-icon name="arrow-forward" class="text-gray"></ion-icon>
+			</button>
+		</ion-col>
+	</ion-row>      
+
+	<ion-row class="row-pencarian-personel-3">
+		<ion-col col-11 class="cursor" (click)="filterSumberPrajurit()">
+			<ion-item class="row-pencarian-personel">
+			    <div class="text-gray text-12">Sumber Prajurit</div>
+			    <div class="text-gray text-10 white-space">{{filter.f_sumber_prajuritid.TEXT}}</div>				
+			</ion-item>			
+		</ion-col>
+		<ion-col col-1 no-padding text-right>
+			<button ion-button class="btn-transaparent full-height btn-expaned" (click)="filterSumberPrajurit()"> 
+				 <ion-icon name="arrow-forward" class="text-gray"></ion-icon>
+			</button>
+		</ion-col>
+	</ion-row>	
+	
 </ion-content>
+<ion-footer no-padding>
+   <button ion-button class="btn-cari" (click)="search()">
+   		Cari
+   </button>
+</ion-footer>

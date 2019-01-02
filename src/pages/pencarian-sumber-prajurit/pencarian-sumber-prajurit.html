@@ -1,0 +1,30 @@
+<!--
+  Generated template for the PencarianSumberPrajuritPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Sumber Prajurit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-list>
+	    <button ion-item *ngFor="let item of data_list" (click)="itemTapped($event, item)" [class.highlight]="item.selected">	      	      
+	      <div>
+	        {{item.NAMA}}
+	      </div>
+	    </button>
+	  </ion-list>
+</ion-content>
+
+<ion-footer no-padding>
+   <button ion-button class="btn-cari" (click)="pilih()">
+   		Pilih
+   </button>
+</ion-footer>

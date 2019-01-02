@@ -14,8 +14,8 @@
 
 
 <ion-content>	
-	<ion-item padding class="satker-root">		
+	<!-- <ion-item padding class="satker-root">		
 		<p><span style="font-size: 14px;color:#fff;font-weight: 500;word-spacing:normal;">Tentara Nasional Indonesia</span></p>
-	</ion-item>
-	<!-- <resource-tree-view [TreeData]="data_tree" (onExpand)="onExpand($event)"></resource-tree-view> -->
+	</ion-item> -->
+	<resource-tree [TreeData]="data_tree" (onExpand)="onExpand($event)" (onSelected)="onSelected($event)"></resource-tree>
 </ion-content>

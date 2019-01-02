@@ -1,0 +1,21 @@
+<!-- Generated template for the ResourceTreeComponent component -->
+<div *ngFor="let item of TreeData" class="satker-row">        
+    <ion-grid no-padding class="btn btn-transaparent btn-action">            
+        <ion-row class="">
+            <ion-col col-1 class="right" style="margin:auto;text-align:center">
+                <div>
+                     <ion-icon item-start *ngIf="item.state=='closed'" (click)="toggleChildren($event,item)" [name]="icon_expanded" tappable></ion-icon>       
+                 </div>
+             </ion-col>
+    
+             <ion-col class="left" col-11 color="randem" (click)="onSelect(item)">
+                <p><span style="font-size: 14px;color:#fff;font-weight: 500;word-spacing:normal;"> {{item.SATKER}}</span></p>
+                    <ion-checkbox class="custom-checkbox" style="margin-right: 15px" *ngIf="hasCheckbox" [(ngModel)]="item.checked" color="randem">                         
+                    </ion-checkbox>                          
+            </ion-col>
+        </ion-row>
+    </ion-grid>        
+<resource-tree [TreeData]="item.Children" *ngIf="item.visible" [hasCheckbox]="hasCheckbox" (onExpand)="onExpanded()" (onSelected)="onSelectedChild($event)">
+</resource-tree>
+
+</div>  

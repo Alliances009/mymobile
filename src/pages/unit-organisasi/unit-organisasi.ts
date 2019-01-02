@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AppConfigProvider } from '../../providers/app-config/app-config';
+import { PencarianProvider } from '../../providers/pencarian/pencarian';
 /**
  * Generated class for the UnitOrganisasiPage page.
  *
@@ -13,13 +14,27 @@ import { AppConfigProvider } from '../../providers/app-config/app-config';
   templateUrl: 'unit-organisasi.html',
 })
 export class UnitOrganisasiPage {
-	data_tree:any;	
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app_config: AppConfigProvider) {
-    let me = this;
+	data_tree:any;
+  parent:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app_config: AppConfigProvider, public pencarian: PencarianProvider) {
+    let me = this,
+        satker = this.navParams.get("satker");
   	this.data_tree = [];    
-    this.getTreeSatker("01",function(result) {
-      me.data_tree = result;
-    });
+    this.parent = this.navParams.get("parent");
+    if (satker != undefined) {
+      me.data_tree = satker;
+    }
+    else
+    {      
+      this.getTreeSatker("",function(result) {
+        me.data_tree = result;
+        if (me.data_tree.length > 0) {          
+          let node = me.data_tree[0];
+          me.onExpand(node);
+          node.visible = true;          
+        }
+      });    
+    }
   }
 
   getTreeSatker(id,callback) {    
@@ -41,7 +56,7 @@ export class UnitOrganisasiPage {
 
   onExpand(node) {
   	let me = this;      
-    let index = this.findIndexTree(me.data_tree,node.level,node.SATKERID,2);    
+    let index = this.findIndexTree(me.data_tree,node.level,node.SATKERID,0);        
     if (index !== -1) {        
       if (!("Children" in index))
       {
@@ -50,6 +65,14 @@ export class UnitOrganisasiPage {
         });
       }
     } 
+    this.pencarian.setData("satker",me.data_tree);
+  }
+
+  onSelected(node){        
+    this.pencarian.setData("satker_selected",node);
+    this.parent.search();
+    this.navCtrl.popToRoot();      
+    
   }
 
   findIndexTree(data,level,SATKERID,index) {
@@ -57,10 +80,10 @@ export class UnitOrganisasiPage {
         dt = data;
     if (level != index) {      
       let idx = me.app_config.findValueFromArrayObject(data,"SATKERID",SATKERID.substr(0,index+2));            
-      dt = data[idx];      
+      dt = data[idx];            
       if (idx !== -1) {        
         if ("Children" in dt) {          
-          dt = me.findIndexTree(dt.Children,level,SATKERID,index+2);
+          dt = me.findIndexTree(dt.Children,level,SATKERID,index+2);          
         }
       }
     }        

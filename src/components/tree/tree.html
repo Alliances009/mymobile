@@ -1,0 +1,21 @@
+<!-- Generated template for the TreeComponent component -->
+<div *ngFor="let item of TreeData" style="padding-left:20px;">        
+    <ion-grid no-padding class="btn btn-transaparent btn-action">            
+        <ion-row class="">
+            <ion-col class="left" col-11 color="secondary">                
+                <p>
+                    <ion-checkbox style="margin-right: 5px;top: 4px;"  color="secondary" [(ngModel)]="item.checked" (click)="onSelect(item)"></ion-checkbox>                          
+                    <span style="font-size: 14px;font-weight: 500;word-spacing:normal;">{{item.TEXT}}</span>
+                </p>
+            </ion-col>
+            <ion-col col-1 class="right" style="margin:auto;text-align:center">
+                <div>
+                     <ion-icon item-start *ngIf="item.state=='closed'" (click)="toggleChildren($event,item)" [name]="item.visible ? 'remove' : 'add'" tappable></ion-icon>       
+                 </div>
+             </ion-col>
+        </ion-row>
+    </ion-grid>        
+<tree [TreeData]="item.Children" *ngIf="item.visible" [hasCheckbox]="hasCheckbox" (onExpand)="onExpanded()" (onSelected)="onSelectedChild($event)">
+</tree>
+
+</div>  

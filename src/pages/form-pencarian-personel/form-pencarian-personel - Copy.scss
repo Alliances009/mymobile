@@ -1,0 +1,70 @@
+page-form-pencarian-personel {
+	.lebel-field-pencarian-personel{
+		margin-left:10px;
+		margin-bottom:0px;
+		margin-top:0px;
+		font-size:14px;
+		color:$color-gray;
+	}
+	.field-pencarian-personel{
+		border:1px solid $color-gray-2;	
+		.text-input{
+			margin:10px;
+		}
+	}
+
+	.full-height{
+		height:100%;
+	}
+
+	.check-pencarian-personel{
+		margin-right:10px !important;
+	}
+	.item-md.item-block .item-inner{
+		border:none;
+		padding-right:0px !important;
+	}	
+
+	.row-pencarian-personel{
+		padding-bottom:0px !important;
+		padding-top:0px !important;
+	}
+
+	.row-pencarian-personel-2{
+		position:relative;
+		top:-10px;
+		padding-bottom:0px !important;
+		padding-top:0px !important;
+	}
+
+	.row-pencarian-personel-3{
+		border-top:1px solid #aaa;
+		ion-label{
+			margin:5px;
+		}		
+		.btn-expaned{
+			top:-5px;
+			right:15px;
+		}
+	}
+	
+	.myCustomSelect{
+	  max-width: 100% !important;
+	  border:1px solid #4e4e4e;	  
+	  padding:10px 5px 10px 10px !important;
+	  .item-cover{
+	  	height:auto;
+	  }
+	  .select-icon{
+	  	padding-right:20px;
+	  }
+	}
+}
+
+.btn-cari{
+		width:100%;
+		background:#45BA7E;		
+		padding-top:20px !important;
+		padding-bottom:20px !important;
+		margin:0px !important;
+	}

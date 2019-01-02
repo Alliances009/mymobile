@@ -10,9 +10,9 @@
   	<ion-item class="title-page" transparent>  		      
       <ion-title>
         Data Pokok 
-      <button ion-button class="nav-data-pokok" transparent (click)="openMenu()">
-          <ion-icon name="more"></ion-icon>
-      </button>
+        <button ion-button class="nav-data-pokok" transparent (click)="openMenu()">
+            <ion-icon name="more"></ion-icon>
+        </button>
       </ion-title>
   	</ion-item>
   </ion-navbar>
@@ -21,41 +21,52 @@
 
 <ion-content no-padding>	
 	<ion-avatar class="foto-personel">
-	   <img src="assets/imgs/img_avatar.png">		 
-	 	<ion-row class="content-sub-head-riwayat">
+	   <img [src]="data.FOTO_MOBILE">		 
+	 	<ion-row [class]="data.CLASS_MATRA">
       <ion-col col-12 text-center>
     			<div class="text-header">{{data.NAMA_PERSONEL}}</div>
-    			<span class="text-sub-header text-block">{{data.NRP}}</span>
+    			<span class="text-sub-header text-block"> <span class="text-navy">NRP :</span> {{data.NRP}} (<span class="text-navy">{{data.MATRA}}</span>)</span>
       </ion-col>
     </ion-row>	  	
 	 </ion-avatar>
    <div class="item-ls">     
   	 <ion-row class="row-item-ls">
+        <ion-fab right>
+          <button ion-fab class="bg-green2" (click)="cetakRH()"><img src="assets/imgs/menu/10-Cetak.png"></button>
+        </ion-fab>
         <ion-col col-12 text-center>
             <div class="item-icon-ls">              
         	 	   <img src="assets/imgs/menu/b01a.png" class="circle-pic">
             </div>
         	 	<div class="item-line-ls"></div>
         </ion-col>
+        <ion-col class="dtp-item-title" col-12 text-center>
+          <span class="text-gray">Pangkat / Korps</span>
+        </ion-col>
         <ion-col class="content-item-ls" col-12 text-center>
-            <div class="text-riw-1 text-gray-2">{{data.LAST_PANGKAT}}</div>
-            <span class="text-riw-2 text-gray">{{data.LAST_TMTPANGKAT}}</span>
+            <div class="text-riw-1 text-gray-2">{{data.LAST_PANGKAT}} </div>
+            <span class="text-riw-2 text-gray">TMT Pangkat : {{data.LAST_TMTPANGKAT}}</span>
         </ion-col>
   	 </ion-row>
 
      <ion-row class="row-item-ls">
+        <ion-fab right>
+          <button ion-fab class="bg-green2" (click)="previewFoto()"><img src="assets/imgs/menu/11-Detail.png"></button>
+        </ion-fab>
         <ion-col col-12 text-center>
             <div class="item-icon-ls">              
                <img src="assets/imgs/menu/b02a.png" class="circle-pic">
             </div>
             <div class="item-line-ls"></div>
         </ion-col>
+        <ion-col class="dtp-item-title" col-12 text-center>
+          <span class="text-gray">Jabatan</span>
+        </ion-col>
         <ion-col class="content-item-ls" col-12 text-center>
             <div class="text-riw-1 text-gray-2">{{data.LAST_JABATAN}}</div>
-            <span class="text-riw-2 text-gray">{{data.LAST_TMTJABATAN}}</span>
+            <span class="text-riw-2 text-gray">TMT Jabatan : {{data.LAST_TMTJABATAN}}</span>
         </ion-col>
-     </ion-row>
-
+     </ion-row>     
      <ion-row class="row-item-ls">
         <ion-col col-12 text-center>
             <div class="item-icon-ls">              
@@ -63,28 +74,36 @@
             </div>
             <div class="item-line-ls"></div>
         </ion-col>
-        <ion-col class="content-item-ls" col-12 text-center>
+        <ion-col class="dtp-item-title" col-12 text-center>
+          <span class="text-gray">Pendidikan</span>
+        </ion-col>
+        <ion-col class="content-item-ls" col-12 col-md-10 offset-md-1 text-center>
             <table col-12>
               <tr>
-                <td class="text-riw-2 text-gray">DIKMA</td>
+                <td class="text-riw-2 text-gray" text-left>DIKMA</td>
                 <td></td>
                 <td class="text-riw-2 text-gray-2" text-left col-8>{{data.DIKMA}} {{data.TAHUN_DIKMA}}</td>
               </tr>
               <tr>
-                <td class="text-riw-2 text-gray">DIKTU</td>
+                <td class="text-riw-2 text-gray" text-left>DIKTUK</td>
                 <td></td>
-                <td class="text-riw-2 text-gray-2" text-left col-8>{{data.DIKTUK}} {{data.TAHUN_DIKTUK}}</td>
+                <td class="text-riw-2 text-gray-2" text-left col-8>{{data.LAST_DIKTUK}} {{data.TAHUN_DIKTUK}}</td>
               </tr>
               <tr>
-                <td class="text-riw-2 text-gray">DIKMA</td>
+                <td class="text-riw-2 text-gray" text-left>DIKMILTI</td>
                 <td></td>
-                <td class="text-riw-2 text-gray-2" text-left col-8>-</td>
+                <td class="text-riw-2 text-gray-2" text-left col-8>{{data.DIKMILTI}} {{data.TAHUN_DIKMILTI}}</td>
               </tr>
               <tr>
-                <td class="text-riw-2 text-gray">DIKTU</td>
+                <td class="text-riw-2 text-gray" text-left>DIKUM</td>
                 <td></td>
-                <td class="text-riw-2 text-gray-2" text-left col-8>-</td>
+                <td class="text-riw-2 text-gray-2" text-left col-8>{{data.DIKUMTI}} {{data.TAHUN_DIKUMTI}}</td>
               </tr>
+              <!-- <tr>
+                <td class="text-riw-2 text-gray" text-left>DIKUMTI</td>
+                <td></td>
+                <td class="text-riw-2 text-gray-2" text-left col-8>{{data.DIKUMTI}} {{data.TAHUN_DIKUMTI}}</td>
+              </tr> -->
             </table>
         </ion-col>
      </ion-row>
@@ -95,6 +114,9 @@
                <img src="assets/imgs/menu/b11a.png" class="circle-pic">
             </div>
             <div class="item-line-ls"></div>
+        </ion-col>
+        <ion-col class="dtp-item-title" col-12 text-center>
+          
         </ion-col>
         <ion-col class="content-item-ls" col-12 text-center>
             <table col-12>
@@ -122,8 +144,8 @@
         <ion-col class="content-item-ls" col-12 text-center>
             <table col-12>
               <tr col-12>
-                <td class="text-riw-2 text-gray" col-6>Sumber Prajurit</td>                
-                <td class="text-riw-2 text-gray" col-6>Ketogori Personel</td>
+                <td class="text-riw-2 text-gray" col-6>Sumber Perwira</td>                
+                <td class="text-riw-2 text-gray" col-6>Kategori Personel</td>
               </tr>
               <tr col-12>
                 <td class="text-riw-2 text-gray-2" col-6>{{data.SUMBER_PRAJURIT}}</td>                
@@ -135,7 +157,7 @@
               </tr>
               <tr col-12>
                 <td class="text-riw-2 text-gray" col-6>TMT TNI/Prajurit</td>                
-                <td class="text-riw-2 text-gray" col-6>TMT Personel</td>
+                <td class="text-riw-2 text-gray" col-6>TMT Perwira</td>
               </tr>
               <tr col-12>
                 <td class="text-riw-2 text-gray-2" col-6>{{data.TMTTNI}}</td>                
@@ -147,14 +169,14 @@
 
      <ion-row class="row-item-ls">
         <ion-col col-12 text-center>
-            <div class="item-icon-ls">              
-               <img src="assets/imgs/menu/b16a.png" class="circle-pic">
+            <div class="item-icon-ls-2">              
+               <img src="assets/imgs/menu/25-Kalender.png" class="circle-pic">
             </div>
             <div class="item-line-ls"></div>
         </ion-col>
         <ion-col class="content-item-ls" col-12 text-center>
             <div class="text-riw-1 text-gray-2">{{data.TTL}}</div>
-            <div class="text-riw-2 text-gray">{{data.NIK}}</div>
+            <div class="text-riw-2 text-gray">NIK : {{data.NIK}}</div>
             <table col-12>
               <tr col-12>
                 <td class="text-riw-2 text-gray" col-4>{{data.JENISKELAMIN}}</td>                
@@ -176,17 +198,22 @@
 
      <ion-row class="row-item-ls">
         <ion-col col-12 text-center>
-            <div class="item-icon-ls">              
-               <img src="assets/imgs/menu/b09a.png" class="circle-pic">
+            <div class="item-icon-ls-2">              
+               <img src="assets/imgs/menu/27-Lokasi.png" class="circle-pic">
             </div>
             <div class="item-line-ls"></div>
         </ion-col>
+        <ion-col class="dtp-item-title" col-12 text-center>
+          <span class="text-gray">Alamat</span>
+        </ion-col>
         <ion-col class="content-item-ls" col-12 text-center>
-            <div class="text-riw-2 text-gray-2">{{data.ALAMATKTP}}</div>
-            <span class="text-riw-2 text-gray">{{data.HP}}</span>
+            <div class="text-riw-2 text-gray-2">{{data.ALAMAT}}</div>
+            <span class="text-riw-2 text-gray">Handphone : {{data.TELEPON}}</span>
         </ion-col>
      </ion-row>
 
    </div>
+
+   
 
 </ion-content>

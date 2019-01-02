@@ -7,11 +7,12 @@ page-dokumen {
 		padding:0px;
 	}
 	.content-md{
-		background-color:$bg !important;
+		background-color:$bg !important;		
 	}
 	ion-content,
 	iframe,
 	ion-item,
+	.item-block,
 	ion-item.item-md{
 		border:none !important;		
 		background-color:$bg;

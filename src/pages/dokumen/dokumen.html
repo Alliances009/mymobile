@@ -6,8 +6,8 @@
 -->
 <ion-header transparent>
 
-  <ion-navbar transparent>
-    <ion-title transparent></ion-title>
+  <ion-navbar transparent>  
+  <button ion-button *ngIf="is_modal==true" class="btn-transaparent" (click)="dismiss()"><ion-icon name="arrow-back" style="font-size: 24px;"></ion-icon></button>  
   </ion-navbar>
 
 </ion-header>
@@ -23,6 +23,7 @@
           </ion-col>
           <ion-col col-8 col-md-10 text-center class="klasifikasi_dokumen">
             <p><span>{{klasifikasi_dokumen}}</span></p>
+            
           </ion-col>
           <ion-col col-2 col-md-1 text-center>
            	<button ion-button [disabled]="disableNext" (click)="nextDocument()">></button>

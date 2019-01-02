@@ -5,20 +5,33 @@
       <img src="assets/imgs/menu/icon-left-head.png" class="item-icon-ls circle-pic">
     </button>
     <ion-title>Pencarian Personel</ion-title>
-    <button ion-button class="btn-bar-main btn-unit-kerja" (click)="showUnitKerja()">      
-      <img src="assets/imgs/menu/unitkerja b.png" class="item-icon-ls circle-pic">
+    <button ion-button class="btn-transaparent text-green" transparent (click)="reset()" style="position: absolute;top: 5px;right: 10px;padding: 0px;">
+          Reset
     </button>
+    <!-- <button ion-button class="btn-bar-main btn-unit-kerja" (click)="showUnitKerja()">      
+      <img src="assets/imgs/menu/unitkerja b.png" class="item-icon-ls circle-pic">
+    </button> -->
   </ion-navbar>
   <ion-grid padding floating class="header">
-    <ion-row class="field-pencarian" no-padding>      
-      <ion-col col-10 col-md-11>
-        <ion-input placeholder="Cari Personel" [(ngModel)]="filter.f_text" clearInput></ion-input>
-      </ion-col>
-      <ion-col col-2 col-md-1 no-padding>
-        <button class="btn-pencarian-expand" ion-button color="warning" full float-right no-padding (click)="showFormPencarian()"> 
-          <ion-icon name="play" class="rotate-180"></ion-icon>
+    <ion-row  no-padding>      
+      <ion-col col-2 col-md-1 style="padding: 0px 5px;">
+        <button class="btn-pencarian-expand bg-green2" ion-button  full no-padding (click)="showFormPencarian()"> 
+          <ion-icon name="funnel"></ion-icon>
         </button>
       </ion-col>
+      <ion-col col-10 col-md-11 no-padding>
+        <ion-row class="field-pencarian" >
+          <ion-col col-10 col-md-11 no-padding>
+            <ion-input placeholder="Cari Personel" [(ngModel)]="filter.f_text" clearInput (keypress)="onSearch($event.keyCode)"></ion-input>
+          </ion-col>
+          <ion-col col-2 col-md-1 no-padding>
+            <button class="btn-pencarian-expand bg-orange" ion-button color="warning" full float-right no-padding (click)="search()"> 
+              <ion-icon name="search"></ion-icon>
+            </button>
+          </ion-col>          
+        </ion-row>  
+      </ion-col>
+
     </ion-row>         
   </ion-grid>  
   <ion-grid no-padding>
@@ -27,35 +40,49 @@
         Nama, Jabatan        
       </ion-col>
       <ion-col col-4 col-md-6>        
-        Pangkat - Korp, NRP        
+        Pangkat - Korps, NRP        
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-header>
 
-<ion-content>  
-  <ion-list no-padding>        
+<ion-content> 
+  <ion-list no-padding *ngIf="is_first_open==false">        
       <ion-item [class]="item.row_class" ion-item *ngFor="let item of data_list" (click)="itemTapped($event, item)">
         <ion-row>
-          <ion-col col-2 col-md-1 no-padding text-center>
+          <ion-col col-2 col-md-1 no-padding text-left class="">
              <ion-avatar>
-                <img src="assets/imgs/img_avatar.png">
+                <img [src]="item.FOTO_MOBILE">
               </ion-avatar>
           </ion-col>
-          <ion-col col-7 col-md-8 no-padding>
+          <ion-col col-7 col-md-7 no-padding class="">
             <p><span class="text-nama">{{item.NAMA}}</span><br>
             <span class="text-jabatan">{{item.NAMAJABATAN}}</span></p>
           </ion-col>
-          <ion-col col-3 col-md-3 no-padding>
-           <p><span class="text-pangkat">{{item.PANGKAT}}</span><br>
+          <ion-col col-3 col-md-4 no-padding class="">
+           <p><span class="text-pangkat">{{item.PANGKAT}} <!-- - {{item.NAMA_KORPS}} --></span><br>
             <span class="text-nrp">{{item.NRP}}</span></p>
           </ion-col>
         </ion-row>
       </ion-item>
   </ion-list>
-   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="is_first_open==false">
      <ion-infinite-scroll-content></ion-infinite-scroll-content>
    </ion-infinite-scroll>
+
+   <ion-item *ngIf="data_list.length==0 && is_first_open==false">
+      <ion-row>
+        <ion-col col-12 text-center>
+          {{msg_data}}
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+   <ion-row class="content-default" *ngIf="is_first_open==true">
+    <ion-col col-12 class="icon-logo">   
+      <img src="assets/imgs/logo_tni.png" class="icon-default">
+    </ion-col>
+  </ion-row>
 </ion-content>
 
 <ion-footer align-title="left" class="bar-assertive">
